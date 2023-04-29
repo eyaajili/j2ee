@@ -1,0 +1,18 @@
+package mvcModels;
+
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class RestaurantService
+ */
+@Stateless
+public class RestaurantService {
+
+    /**
+     * Default constructor. 
+     */
+    public RestaurantService() {
+        // TODO Auto-generated constructor stub
+    }
+
+}

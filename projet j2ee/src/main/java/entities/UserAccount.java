@@ -1,0 +1,94 @@
+package entities;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+
+/**
+ * The persistent class for the user_account database table.
+ * 
+ */
+@Entity
+@Table(name="user_account")
+@NamedQuery(name="UserAccount.findAll", query="SELECT u FROM UserAccount u")
+public class UserAccount implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int UCid;
+
+	private String email;
+
+	@Column(name="login_status")
+	private String loginStatus;
+
+	private String password;
+
+	private String phone;
+
+	@Column(name="user_id")
+	private int userId;
+
+	private String username;
+
+	public UserAccount() {
+	}
+
+	public int getUCid() {
+		return this.UCid;
+	}
+
+	public void setUCid(int UCid) {
+		this.UCid = UCid;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getLoginStatus() {
+		return this.loginStatus;
+	}
+
+	public void setLoginStatus(String loginStatus) {
+		this.loginStatus = loginStatus;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPhone() {
+		return this.phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public int getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public String getUsername() {
+		return this.username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+}

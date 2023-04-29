@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\Users\Asus\Desktop\projet J2ee\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\526689308.index
+\projet j2ee\src\main\java
+C:\Users\Asus\Desktop\projet J2ee\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2731824222.index
+\tp4jee\src\main\java

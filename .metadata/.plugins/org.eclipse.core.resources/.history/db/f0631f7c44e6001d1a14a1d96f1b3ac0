@@ -1,0 +1,62 @@
+package entities;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="rating")
+public class Rating implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
+
+    @Column(name="rating_value")
+    private byte ratingValue;
+
+    @Column(name="user_id")
+    private int userId;
+
+    @ManyToOne
+    @JoinColumn(name="restaurant_id")
+    private Restaurant restaurant;
+
+    public Rating() {
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public byte getRatingValue() {
+        return this.ratingValue;
+    }
+
+    public void setRatingValue(byte ratingValue) {
+        this.ratingValue = ratingValue;
+    }
+
+    public int getUserId() {
+        return this.userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public Restaurant getRestaurant() {
+        return this.restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+}

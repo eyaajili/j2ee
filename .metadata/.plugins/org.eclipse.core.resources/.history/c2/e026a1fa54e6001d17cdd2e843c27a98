@@ -1,0 +1,136 @@
+package entities;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
+
+
+/**
+ * The persistent class for the restaurant database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="Restaurant.findAll", query="SELECT r FROM Restaurant r")
+public class Restaurant implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="Rid")
+	private int Rid;
+
+	private String address;
+
+	@Column(name="image_url")
+	private String imageUrl;
+
+	private String name;
+
+	private String phone;
+
+	private String specialty;
+
+	//bi-directional many-to-one association to Comment
+	@OneToMany(mappedBy="restaurant", fetch=FetchType.LAZY)
+	private List<Comment> comments;
+
+	//bi-directional many-to-one association to Rating
+	@OneToMany(mappedBy="restaurant", fetch=FetchType.EAGER)
+	private List<Rating> ratings;
+
+	public Restaurant() {
+	}
+
+	public int getRid() {
+		return this.Rid;
+	}
+
+	public void setRid(int Rid) {
+		this.Rid = Rid;
+	}
+
+	public String getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getImageUrl() {
+		return this.imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhone() {
+		return this.phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getSpecialty() {
+		return this.specialty;
+	}
+
+	public void setSpecialty(String specialty) {
+		this.specialty = specialty;
+	}
+
+	public List<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public Comment addComment(Comment comment) {
+		getComments().add(comment);
+		comment.setRestaurant(this);
+
+		return comment;
+	}
+
+	public Comment removeComment(Comment comment) {
+		getComments().remove(comment);
+		comment.setRestaurant(null);
+
+		return comment;
+	}
+
+	public List<Rating> getRatings() {
+		return this.ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
+	}
+
+	public Rating addRating(Rating rating) {
+		getRatings().add(rating);
+		rating.setRestaurant(this);
+
+		return rating;
+	}
+
+	public Rating removeRating(Rating rating) {
+		getRatings().remove(rating);
+		rating.setRestaurant(null);
+
+		return rating;
+	}
+
+}

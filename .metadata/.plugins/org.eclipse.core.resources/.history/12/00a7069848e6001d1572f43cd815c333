@@ -1,0 +1,68 @@
+package entities;
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.*;
+
+
+/**
+ * The persistent class for the comment database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="Comment.findAll", query="SELECT c FROM Comment c")
+public class Comment implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+
+	@Lob
+	@Column(name="comment_text")
+	private String commentText;
+
+	@Column(name="user_id")
+	private int userId;
+
+	//bi-directional many-to-one association to Restaurant
+	@ManyToMany
+	private int restaurant_id;
+
+	public Comment() {
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getCommentText() {
+		return this.commentText;
+	}
+
+	public void setCommentText(String commentText) {
+		this.commentText = commentText;
+	}
+
+	public int getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public int getRestaurant() {
+		return this.restaurant_id;
+	}
+
+	public void setRestaurant(id restaurant_id) {
+		this.restaurant_id = restaurant_id;
+	}
+
+}
