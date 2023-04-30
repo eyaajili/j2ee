@@ -1,0 +1,69 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Eat better</title>
+<style>
+    body {
+      background-image: linear-gradient(90deg,rgba(243,231,242,0.9),rgba(194,109,188,0.9)), url(https://i.pinimg.com/564x/6f/c4/76/6fc476c7bf52d205f3c68b8dfe32276b.jpg) ;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <img style=" height: 200PX; object-fit: cover;  align-self: auto;" src="https://img.freepik.com/free-vector/cafe-interior-with-coffee-machine-cashier-desk-refrigerator-chalkboard-menu-tables-with-couches-bar-chairs_107791-3398.jpg?w=826&t=st=1679790068~exp=1679790668~hmac=fe270562982c7c9ab555c08faf697abe6e68fa9567b16f3e28265d68d6fcd38a" alt="">
+        </div>
+        <div class="row">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" style="border-radius: 15px;">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Eat Better</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="Servlet?action=listRestaurant">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="Servlet?action=login">Log in</a>
+                      </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <label for="search" class="form-label"><img style="width: 35px;" src="https://img.icons8.com/nolan/256/search-more.png"></label>
+                      <input id="search" class="form-control me-2" type="search" aria-label="Search">
+                      <button class="btn" style="border-color: violet; background-color: #e6d1e6; color: black;" type="submit">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+                          <c:forEach var="res" items="${requestScope.restaurants}">
+                            <div class="card" style="width: 18rem; margin-left: 15PX; margin-bottom: 15PX;">
+              
+                <img src="${res.imageUrl}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"> <c:out value="${res.name}" escapeXml="false" /> </h5>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><p class="card-text"><c:out value="${res.description}" escapeXml="false" /></p></li>
+                    <li class="list-group-item"> <span class="badge text-bg-secondary" style="margin-left: 15px;"><c:out value="${res.speciality}" escapeXml="false" /></span>
+                    <li class="list-group-item"><a href="#" class="btn" style="background-color: #e6d1e6;">See more details</a></li>
+                  </ul>
+                </div>
+              </div>
+            </c:forEach>
+        </div>
+    </div>
+
+
+</body>
+</html>

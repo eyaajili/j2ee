@@ -49,14 +49,14 @@ public class Servlet extends HttpServlet {
             rd=request.getRequestDispatcher("addRestaurant.jsp");
             rd.forward(request, response);
       
-            String name = request.getParameter("name");System.out.println("\n"+name);
-            String phone = request.getParameter("phone");System.out.println("\n"+phone);
-            String address = request.getParameter("address");System.out.println("\n"+address);
-            String specialty = request.getParameter("specialty");System.out.println("\n"+specialty);
-            String imageUrl = request.getParameter("imageUrl");System.out.println("\n"+imageUrl);
+            String name = request.getParameter("name");
+            String phone = request.getParameter("phone");
+            String address = request.getParameter("address");
+            String specialty = request.getParameter("specialty");
+            String imageUrl = request.getParameter("imageUrl");
 
             if (name != null && !name.isEmpty() && phone != null && !phone.isEmpty() && address != null
-                    && !address.isEmpty() && imageUrl != null && !imageUrl.isEmpty()) {
+                    && !address.isEmpty() && imageUrl != null && !imageUrl.isEmpty()&& specialty != null && !specialty.isEmpty()) {
                 // Create a new restaurant object with the provided details
                 Restaurant restaurant = new Restaurant();
                 restaurant.setName(name);
@@ -82,7 +82,7 @@ public class Servlet extends HttpServlet {
 			request.setAttribute("restaurants", restaurants);
 			rd = request.getRequestDispatcher("listRestaurant.jsp");
 			rd.forward(request, response);
-			
+
 			
 		}
 		if(action.contentEquals("deleteRestaurant"))
